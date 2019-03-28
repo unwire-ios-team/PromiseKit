@@ -513,7 +513,7 @@ public func firstly<T>(on: DispatchQueue, execute body: () throws -> Promise<T>)
 /**
  - SeeAlso: `DispatchQueue.promise(group:qos:flags:execute:)`
  */
-@available(*, deprecated: 4.0, renamed: "DispatchQueue.promise")
+@available(*, deprecated, renamed: "DispatchQueue.promise")
 public func dispatch_promise<T>(_ on: DispatchQueue, _ body: @escaping () throws -> T) -> Promise<T> {
     return Promise(value: ()).then(on: on, execute: body)
 }

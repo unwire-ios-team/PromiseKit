@@ -4,7 +4,7 @@ import Dispatch
 /**
  - Returns: A new promise that fulfills after the specified duration.
 */
-@available(*, deprecated: 4.3, message: "Use after(seconds:)")
+@available(*, deprecated, message: "Use after(seconds:)")
 public func after(interval: TimeInterval) -> Promise<Void> {
     return after(seconds: interval)
 }
