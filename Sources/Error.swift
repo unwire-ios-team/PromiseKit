@@ -70,9 +70,9 @@ public enum PMKURLError: Error {
         case .invalidImageData:
             return nil
         case .badResponse(_, _, let rsp):
-            return rsp as! Foundation.HTTPURLResponse
+            return (rsp as! Foundation.HTTPURLResponse)
         case .stringEncoding(_, _, let rsp):
-            return rsp as! Foundation.HTTPURLResponse
+            return (rsp as! Foundation.HTTPURLResponse)
         }
     }
 }
@@ -112,8 +112,10 @@ private struct ErrorPair: Hashable {
     init(_ d: String, _ c: Int) {
         domain = d; code = c
     }
-    var hashValue: Int {
-        return "\(domain):\(code)".hashValue
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(domain)
+        hasher.combine(code)
     }
 }
 
